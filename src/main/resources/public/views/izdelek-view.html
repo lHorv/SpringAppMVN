@@ -1,0 +1,23 @@
+<div class="container pad-top">
+  <table class="table izdelektable">
+      <tr>
+          <td><h3>Podrobnosti za {{izdelek.ime}}</h3></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>Ime</td>
+          <td>{{izdelek.ime}}</td>
+      </tr>
+      <tr>
+          <td>Cena</td>
+          <td>{{izdelek.cena}}</td>
+      </tr>
+      <tr>
+          <td>Sifra</td>
+          <td>{{izdelek.sifra}}</td>
+      </tr>
+  </table>
+  <div>
+      <a class="btn btn-primary" ui-sref="editIzdelek({id:izdelek.id})">Edit</a>
+  </div>
+</div>
