@@ -10,6 +10,7 @@ public class Izdelek {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	
 	private String ime;
 	private double cena;
 	private String sifra;
