@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import nfg.model.Izdelek;
@@ -47,5 +48,20 @@ public class IzdelekController {
 		Izdelek i = izdelekRepository.findOne(id);
 		izdelekRepository.delete(i);
 		return i;
+	}
+	
+	@RequestMapping(value = "izdelki/getBySifra", method = RequestMethod.GET)
+	public List<Izdelek> getBySifra(@RequestParam(value="sifra") String sifra) {
+		return izdelekRepository.findBySifraStartingWith(sifra);
+	}
+	
+	@RequestMapping(value = "izdelki/getPriceBetween", method = RequestMethod.GET)
+	public List<Izdelek> getByPriceBetween(@RequestParam(value="low") double low, @RequestParam(value="high") double high) {
+		return izdelekRepository.findByCenaGreaterThanEqualAndCenaLessThanEqual(low, high);
+	}
+	
+	@RequestMapping(value = "izdelki/getByIme", method = RequestMethod.GET)
+	public List<Izdelek> getByIme(@RequestParam(value="ime") String ime) {
+		return izdelekRepository.findByImeLike(ime);
 	}
 }
