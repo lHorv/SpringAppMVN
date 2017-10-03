@@ -44,7 +44,6 @@ public class IzdelekControllerTest {
 		
 		verify(izdelekRepository).findOne(1L);
 		
-		//assertEquals(1L, i.getId().longValue());
 		assertThat(i.getId(), is(1L));
 	}
 	
@@ -90,7 +89,6 @@ public class IzdelekControllerTest {
 	}
 	
 	@Test
-	@Ignore
 	public void testIzdelekDelete() {
 		Izdelek izdelek = new Izdelek();
 		izdelek.setId(4L);
@@ -100,16 +98,15 @@ public class IzdelekControllerTest {
 		
 		ic.create(izdelek);
 		
-		Izdelek i = ic.get(4L);
-		assertNotNull(i);
+		Izdelek i1 = ic.get(4L);
+		assertNotNull(i1);
 		
-		ic.delete(4L);
-		Izdelek i2 = ic.get(4L);
+		Izdelek i2 = ic.delete(4L);
 		
 		verify(izdelekRepository).saveAndFlush(izdelek);
 		verify(izdelekRepository).delete(izdelek);
-		verify(izdelekRepository, times(3)).findOne(4L);
+		verify(izdelekRepository, times(2)).findOne(4L);
 		
-		assertNull(i2);
+		assertEquals(i1, i2);
 	}
 }
