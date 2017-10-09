@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="1" author="luka">
+        <createTable tableName="izdelekLiquibase">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="ime" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cena" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sifra" type="varchar(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    
+    <changeSet id="2" author="luka">
+    	<insert tableName="izdelekLiquibase">
+    		<column name="id" value="1" />
+    		<column name="ime" value="Jabolka" />
+    		<column name="cena" value="0.29" />
+    		<column name="sifra" value="JAB819024" />
+    	</insert>
+    	<insert tableName="izdelekLiquibase">
+    		<column name="id" value="2" />
+    		<column name="ime" value="Kiwi" />
+    		<column name="cena" value="0.39" />
+    		<column name="sifra" value="KIW099182" />
+    	</insert>
+    </changeSet>
+
+</databaseChangeLog>
